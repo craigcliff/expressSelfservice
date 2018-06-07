@@ -74,6 +74,21 @@ padding-left: 130px;
 }
   
   }
+
+
+@media screen and (max-width: 960px) {
+  
+ .sub-heading-container{
+
+
+padding-top:-75px;
+
+
+}
+  
+  }
+
+  
 </style>
 
 

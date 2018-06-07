@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer clipped fixed permanent v-model="drawer"  app width="180"  class="drawer-color">
+  <v-navigation-drawer clipped fixed  v-model="drawer"   app width="180"  class="drawer-color">
   
   
   

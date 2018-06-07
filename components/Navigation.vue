@@ -1,8 +1,9 @@
 <template>
   <nav >
-    <v-toolbar app fixed clipped-left class="hidden-sm-and-down white "
-    height="75px"
+    <v-toolbar app fixed clipped-left class="hidden-sm-and-down white  "
+    
     >
+   
       <v-toolbar-title class="logo" to="/">
      
        
@@ -38,6 +39,7 @@
       <v-expansion-panel>
         <v-expansion-panel-content>
           <div slot="header">
+             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <router-link class="nav-item" to="/">LOGO</router-link>
           </div>
           <v-card>

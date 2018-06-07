@@ -6,7 +6,7 @@
    <Drawer/>
      <Navigation/>
      <v-content>
-     <SubNav/>
+     <SubNav class="sub"> </SubNav>
      </v-content>
      
   <nuxt />
@@ -73,4 +73,27 @@ import Drawer from '~/components/Drawer.vue'
 
 
 }
+
+
+
+
+@media screen and (max-width: 960px) {
+  
+    .sub{
+
+margin-top:-48px;
+
+}
+  
+  }
+
+  @media screen and (max-width: 500px) {
+  
+    .sub{
+
+margin-top:-55px;
+
+}
+  
+  }
 </style>
