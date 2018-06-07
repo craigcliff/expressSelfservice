@@ -4,7 +4,8 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const nodeSSPI = require('node-sspi')
 const request = require('request')
-const host = process.env.HOST || '127.0.0.1'
+// const host = process.env.HOST || '127.0.0.1'
+const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3003
 
 app.set('port', port)
