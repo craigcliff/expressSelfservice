@@ -66,11 +66,7 @@ import Drawer from '~/components/Drawer.vue'
     
       rgba(255, 255, 255, 0.8),
       rgba(255, 255, 255, 0.7)
-    ),
-    url(~/assets/images/bg.jpeg);
-     background-repeat: no-repeat;
-    background-size: cover;
-
+    )
 
 }
 

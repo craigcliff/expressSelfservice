@@ -1,6 +1,7 @@
 <template>
   
      <div class = "sub-heading-container"      >
+       
          <div class="sub-heading-image">
           <img  src="~/assets/images/support/selfservice.png" alt="Smiley face" height="40" width="30">
           </div>

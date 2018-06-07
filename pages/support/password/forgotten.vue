@@ -1,141 +1,284 @@
 <template>
-
-<v-content   >
-
-       <!-- <SubNav/> -->
-      <v-container   >
-
-          <v-layout row wrap class="panel-container" >
-<v-flex xs6 >
-<v-form ref="form" v-model="valid" lazy-validation  >
-    <div>
-    <v-text-field
-      v-model="testUser"
-      
-      label="Username"
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="subject"
-     
-      label="Subject"
-      required
-    ></v-text-field>
-     <v-text-field
-          v-model="information"
-
-          label="Provide further information about this request, if possible"
-          textarea
-        ></v-text-field>
+  <v-content>
+  
+  
+  
+    <!-- <SubNav/> -->
+  
     
-   
-</div >
-    <v-btn
+  
+  
+  
+          <formComponent>
+  
+  
+  
+            <v-text-field slot="username" label="Username" required  v-model="username">
+
+  
+  
+  
+            </v-text-field>
+  
+            <v-text-field slot="subject" label="Subject" required v-model="subject">
+            
+  
+  
+  
+            </v-text-field>
+  
+            <v-text-field slot="info" label="Provide further information about this request, if possible" textarea>
+  
+  
+  
+  
+  
+            </v-text-field>
+  
+  
+  
+<v-btn slot="submitBtn"
       :disabled="!valid"
       @click="submit"
     >
       submit
     </v-btn>
-    <v-btn @click="clear">clear</v-btn>
-  </v-form>
+
+
+  <v-btn slot="clearBtn" @click="clear">clear</v-btn>
+          </formComponent>
+  
+  
+  
+  
+   <v-progress-circular class="progress" v-show="showProgress" indeterminate color="accent"
+   :size="100" :width="7" ></v-progress-circular>
+
+   
+   
+    <v-progress-circular class="progress" v-show="showProgress" indeterminate color="accent"
+   :size="100" :width="7" ></v-progress-circular>
+
+      <v-dialog v-model="dialog" max-width="290">
+        
+        <v-card>
+          <v-card-title class="headline">Success</v-card-title>
+          <v-card-text>{{output}}</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            
+            <v-btn color="blue darken-4" flat="flat" @click.native="dialog = false">OK</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
   
-</v-flex >
-          </v-layout>
-             
-
-       <!-- <SubNav/> -->
-      </v-container   >
-
-           </v-content   >
-    
+  
+  
+  </v-content>
 </template>
 
 
 
 <script>
-const axios = require("axios");
-
-export default {
-  data() {
-    return {
-      testUser: "",
-
-      valid: true,
-
-      subject: " I have forgotten my network password",
-      information: ""
-    };
-  },
-
-  mounted() {
-    this.loadUsername();
-  },
-
-  methods: {
-    loadUsername() {
-      var temp = "";
-
-      {
-        axios
-          .get("http://localhost:3333/getUser", { withCredentials: true })
-
-          .then(response => {
-            temp = response.data.substring(response.data.indexOf("\\") + 1);
-            this.testUser = temp;
-
-            console.log(this.testUser);
-            console.log("testing Hello");
-          })
-          .catch(error => {
-            console.log(error.response);
-          });
-      }
+  const axios = require("axios");
+  
+  import formComponent from "~/components/form.vue";
+  
+  
+  
+  export default {
+  
+    components: {
+  
+      formComponent
+  
     },
-    submit() {
-      console.log("clicked");
-      if (this.$refs.form.validate()) {
-        var postData = {
-          api: "integration",
-          profile: "Sanlam",
-          userid: "admin",
-          pwd: "admin",
-          data: {
-            TASKOWNEREMAIL: "CRAIGH",
-            TASKTYPE: "143",
-            TASKTYPECLASSIFICATION: "3",
-
-            ACTION: "NEW",
-            SUBJECT: "TESTING SUBJECT",
-            DESC: "TESTING DESC"
-          }
-        };
-
-        let axiosConfig = {
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache",
-            "Access-Control-Allow-Origin": "*"
-          }
-        };
-
-        axios
-          .post(
-            "http://localhost:3333/sendDetails",
-           postData,axiosConfig
-          )
-          .then(res => {
-            console.log("RESPONSE RECEIVED: ", res);
-          })
-          .catch(err => {
-            console.log("AXIOS ERROR: ", err);
-          });
-      }
+  
+  
+  
+    data() {
+  
+      return {
+        showProgress: false,
+     
+      
+        username: "",
+  
+  
+  
+        valid: true,
+  
+  
+  
+        subject: "Forgotten password",
+  
+        information: "",
+        output: '',
+         dialog: false
+        
+  
+      };
+  
     },
+  
+  
+  
+    mounted() {
+  
+      this.loadUsername();
+  
+    },
+  
+  
+  
+    methods: {
+  
+      loadUsername() {
+  
+        var temp = "";
+  
+  
+  
+        {
+  
+          axios
+  
+            .post("https://jsonplaceholder.typicode.com/posts/", {
+  
+              withCredentials: true
+  
+            })
+  
+           
+  
+            .then(response => {
+               
+  
+              temp = response.data.substring(response.data.indexOf("\\") + 1);
+  
+              this.username = temp;
+              
+            
 
-    clear() {
-      this.$refs.form.reset();
+              console.log(this.username);
+  
+              console.log("testing Hello");
+  
+            })
+  
+            .catch(error => {
+  
+              console.log(error.response);
+  
+            });
+  
+        }
+  
+      },
+  
+      submit() {
+  
+       this.showProgress= true;
+  
+          var postData = {
+  
+          userId: '1456',
+    id: '600',
+    title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    body: "TESTING12345"
+  
+          };
+  
+  
+  
+          let axiosConfig = {
+  
+            headers: {
+  
+              "Content-Type": "application/json",
+  
+              "Cache-Control": "no-cache",
+  
+              "Access-Control-Allow-Origin": "*",
+  
+              withCredentials: "true"
+  
+            }
+  
+          };
+  
+  
+  
+          axios
+  
+            .post(
+  
+              "http://jsonplaceholder.typicode.com/posts/",
+  
+              postData,
+  
+              axiosConfig
+  
+            )
+  
+            .then(res => {
+  
+              console.log("RESPONSE RECEIVED: ", res);
+              this.dialog = true;
+              this.showProgress= false;
+             
+              this.output = res.data.title
+            })
+  
+            .catch(err => {
+  
+              console.log("AXIOS ERROR: ", err);
+              this.showProgress= false;
+  
+            });
+  
+       
+  
+      },
+  
+  
+  
+      clear() {
+  
+        this.$refs.form.reset();
+  
+      }
+  
     }
-  }
-};
+  
+  };
 </script>
+
+<style scoped>
+
+
+.alert{
+
+border-radius: 10px;
+height: 150px;
+width: 200px;
+ margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+}
+
+.progress{
+
+
+
+ margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+}
+
+
+</style>
+

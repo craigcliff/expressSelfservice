@@ -6,7 +6,7 @@
   
       <v-layout row wrap class="panel-container">
   
-        <v-flex xs6>
+        <v-flex xs5>
 
 <v-form ref="form"  lazy-validation  >
  

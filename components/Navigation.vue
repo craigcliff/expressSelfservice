@@ -39,8 +39,21 @@
       <v-expansion-panel>
         <v-expansion-panel-content>
           <div slot="header">
-             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <router-link class="nav-item" to="/">LOGO</router-link>
+            
+             
+             <v-toolbar-title class="logo" to="/">
+      
+       
+       <img
+                  
+                  src="~/assets/images/logo/logo.png"
+                  alt="logo"
+                  height="35" width="80"
+                > 
+       
+       
+     
+      </v-toolbar-title>
           </div>
           <v-card>
             <router-link class="nav-item" to="#">
