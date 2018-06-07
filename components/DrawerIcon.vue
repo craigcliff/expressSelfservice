@@ -63,7 +63,7 @@
   .drawer-icon {
   
     width: 100%;
-    height: 100%;
+  height: 100%;
     
     display: flex;
     flex-direction: column;
@@ -104,6 +104,8 @@
   .panel-heading{
     color: white;
   }
+
+  
   
   
  

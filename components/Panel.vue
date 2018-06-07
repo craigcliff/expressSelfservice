@@ -74,6 +74,8 @@ export default {
   display: flex;
   height: 50px;
   width: 340px;
+  font-size: 14px;
+  font-weight: 800;
 }
 .panel-content{
     padding-top: 15px;
@@ -102,6 +104,18 @@ export default {
    color: #1976D2;
    font-weight: 700;
 }
+
+  @media screen and (max-width: 1260px) {
+  
+       .request-text {
+  
+        font-size: 12px;
+  
+      }
+
+ 
+  
+    }
 
 .request-symbol {
   display: flex;

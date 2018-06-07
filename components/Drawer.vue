@@ -11,7 +11,7 @@
       
   <nuxt-link slot="panel-link" to="/support" exact>
         
-          <img slot="panel-image" src="~/assets/images/support.png" alt="Smiley face" height="75" width="75">
+          <img slot="panel-image" class="panel-image" src="~/assets/images/support.png" alt="Smiley face" >
        
              <div slot ="panel-heading" class="panel-heading">Support </div>
         </nuxt-link> 
@@ -27,7 +27,7 @@
         <DrawerIcon :heading="'Requests'">
           <nuxt-link slot="panel-link" to="/requests" exact>
   
-          <img slot="panel-image" src="~/assets/images/requests.png" alt="Smiley face" height="75" width="75">
+          <img class="panel-image" slot="panel-image" src="~/assets/images/requests.png" alt="Smiley face" >
   
   
   
@@ -43,7 +43,7 @@
   <nuxt-link slot="panel-link" to="/forms" exact>
          
          
-          <img slot="panel-image" src="~/assets/images/forms.png" alt="Smiley face" height="75" width="75">
+          <img  class="panel-image" slot="panel-image" src="~/assets/images/forms.png" alt="Smiley face" >
   
    <div slot ="panel-heading" class="panel-heading">Templates</div>
   </nuxt-link>
@@ -56,7 +56,7 @@
         <DrawerIcon :heading="'Policies'">
    <nuxt-link slot="panel-link" to="/policies" exact>
   
-          <img slot="panel-image" src="~/assets/images/policies.png" alt="Smiley face" height="75" width="75">
+          <img slot="panel-image" class="panel-image" src="~/assets/images/policies.png" alt="Smiley face" >
   <div slot ="panel-heading" class="panel-heading">Policies</div>
   </nuxt-link>
    </DrawerIcon>
@@ -65,8 +65,8 @@
       
   
         <DrawerIcon :heading="'MAPS'">
-  <nuxt-link slot="panel-link" to="/maps" exact>
-          <img slot="panel-image" src="~/assets/images/maps2.png" alt="Smiley face" height="75" width="75">
+  <nuxt-link slot="panel-link"  to="/maps" exact>
+          <img slot="panel-image" class="panel-image" src="~/assets/images/maps2.png" alt="Smiley face" >
   
   <div slot ="panel-heading" class="panel-heading">Maps</div>
   </nuxt-link>
@@ -194,6 +194,7 @@
   
       align-items: space-between;
   
+      
       justify-content: space-between;
   
       flex-direction: column;
@@ -201,6 +202,7 @@
       height: 100%;
   
       width: 100%;
+      
   
     }
   
@@ -281,6 +283,28 @@
     background-color: rgba(145, 101, 126, 0.55);
   
   }
+
+  .panel-image{
+
+height:75px;
+width:75px;
+
+  }
+
+  @media screen and (max-height: 660px) {
+  
+       .panel-image {
+  
+        max-height:55px;
+max-width:55px;
+  
+      }
+
+      .panel-heading{
+  font-size: 12px;
+}
+  
+    }
 </style>
 
 

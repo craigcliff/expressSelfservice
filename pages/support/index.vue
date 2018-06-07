@@ -7,7 +7,7 @@
       <v-container   >
 
           <v-layout row wrap class="panel-container" >
-        <v-flex xs4 >
+        <v-flex lg4 >
 
 <Panel :heading="'PASSWORDS AND ACCESS'">
 <img slot="panel-image"
@@ -86,7 +86,7 @@
  </v-flex>
 
 
- <v-flex xs4 >
+ <v-flex lg4 >
 
 <Panel :heading="'DESKTOP'">
 <img slot="panel-image"
@@ -159,7 +159,7 @@
 
  </v-flex>
 
- <v-flex xs4>
+ <v-flex lg4>
 
    <Panel :heading="'PRINT AND SCANNING'">
 <img slot="panel-image"
