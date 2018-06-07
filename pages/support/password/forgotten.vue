@@ -51,23 +51,24 @@
   
   
   
-   <v-progress-circular class="progress" v-show="showProgress" indeterminate color="accent"
-   :size="100" :width="7" ></v-progress-circular>
+ 
 
    
    
-    <v-progress-circular class="progress" v-show="showProgress" indeterminate color="accent"
-   :size="100" :width="7" ></v-progress-circular>
+    
 
       <v-dialog v-model="dialog" max-width="290">
+
+        <v-progress-circular class="progress" v-show="showProgress" indeterminate color="accent"
+   :size="100" :width="7" ></v-progress-circular>
         
-        <v-card>
+        <v-card v-show="showInfo">
           <v-card-title class="headline">Success</v-card-title>
           <v-card-text>{{output}}</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
             
-            <v-btn color="blue darken-4" flat="flat" @click.native="dialog = false">OK</v-btn>
+            <v-btn color="blue darken-4" flat="flat" @click.native="exitModal">OK</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -101,6 +102,7 @@
   
       return {
         showProgress: false,
+        showInfo: false,
      
       
         username: "",
@@ -133,6 +135,15 @@
   
   
     methods: {
+
+      exitModal(){
+
+this.dialog = false;
+this.showProgress= false;
+this.showInfo= false;
+
+
+      },
   
       loadUsername() {
   
@@ -178,7 +189,7 @@
       },
   
       submit() {
-  
+  this.dialog = true;
        this.showProgress= true;
   
           var postData = {
@@ -225,7 +236,8 @@
             .then(res => {
   
               console.log("RESPONSE RECEIVED: ", res);
-              this.dialog = true;
+              
+              this.showInfo = true
               this.showProgress= false;
              
               this.output = res.data.title
@@ -258,7 +270,7 @@
 <style scoped>
 
 
-.alert{
+/* .alert{
 
 border-radius: 10px;
 height: 150px;
@@ -269,6 +281,8 @@ width: 200px;
 
 }
 
+*/
+
 .progress{
 
 
@@ -277,7 +291,7 @@ width: 200px;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 
-}
+} 
 
 
 </style>
