@@ -2,8 +2,9 @@
 const express = require('express')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-const nodeSSPI = require('node-sspi')
+// const nodeSSPI = require('node-sspi')
 const request = require('request')
+const username = require('username')
 // const host = process.env.HOST || '127.0.0.1'
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3003
@@ -35,22 +36,33 @@ start()
 
 
 
-app.get('/getUser',function (req, res, next) {
+// app.get('/getUser',function (req, res, next) {
   
-  var nodeSSPIObj = new nodeSSPI({
+//   var nodeSSPIObj = new nodeSSPI({
       
-    retrieveGroups: true,
-    authoritative:false
-  })
-  nodeSSPIObj.authenticate(req, res, function(err){
+//     retrieveGroups: true,
+//     authoritative:false
+//   })
+//   nodeSSPIObj.authenticate(req, res, function(err){
 
-    res.send(req.connection.user) || next()
+//     res.send(req.connection.user) || next()
 
 
-  })
- });
+//   })
+//  });
 
  app.use('/sendDetails', function(req, res) {  
   var url = "http://srv001583/activeservicedeskadmin/helpdesk/api.php" + req.url;
   req.pipe(request(url)).pipe(res);
 });
+
+app.get('/getUser2',function (req, res, next) {
+
+  username().then(username => {
+    console.log(username);
+    res.send(username);
+    //=> 'sindresorhus'
+  });
+  
+
+ });

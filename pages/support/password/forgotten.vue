@@ -27,7 +27,7 @@
   
             </v-text-field>
   
-            <v-text-field slot="info" label="Provide further information about this request, if possible" textarea>
+            <v-text-field slot="info" label="Provide further information about this request, if possible" textarea v-model="information">
   
   
   
@@ -64,7 +64,8 @@
         
         <v-card v-show="showInfo">
           <v-card-title class="headline">Success</v-card-title>
-          <v-card-text>{{output}}</v-card-text>
+          <v-card-text>Your request has been submitted.  
+            Your reference number is: {{output}}</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
             
@@ -155,7 +156,7 @@ this.showInfo= false;
   
           axios
   
-            .post("https://jsonplaceholder.typicode.com/posts/", {
+            .get("/getUser2", {
   
               withCredentials: true
   
@@ -193,13 +194,24 @@ this.showInfo= false;
        this.showProgress= true;
   
           var postData = {
-  
-          userId: '1456',
-    id: '600',
-    title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    body: "TESTING12345"
-  
-          };
+  api:"integration", 
+  profile:"sanlam", 
+  userid:"admin", 
+  pwd:"admin", 
+  data: 
+    {
+    	
+    	ASDCallTypeID:"143",
+    	ASDClassificationID:"3",
+    	ASDSubject: this.subject,
+    	ASDOwnerEmail: this.username,
+      ACTION:"NEW", 
+      SUBJECT:this.subject, 
+      DESC:this.information
+      
+    }
+}
+;
   
   
   
@@ -225,7 +237,7 @@ this.showInfo= false;
   
             .post(
   
-              "http://jsonplaceholder.typicode.com/posts/",
+              "/sendDetails",
   
               postData,
   
@@ -240,7 +252,7 @@ this.showInfo= false;
               this.showInfo = true
               this.showProgress= false;
              
-              this.output = res.data.title
+              this.output = res.data.data.taskref
             })
   
             .catch(err => {

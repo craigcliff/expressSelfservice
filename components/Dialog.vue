@@ -67,7 +67,7 @@ export default {
 
       {
         axios
-          .get("http://localhost:3333/getUser", { withCredentials: true })
+          .get("/getUser2", { withCredentials: true })
 
           .then(response => {
             temp = response.data.substring(response.data.indexOf("\\") + 1);
