@@ -36,27 +36,27 @@ start()
 
 
 
-// app.get('/getUser',function (req, res, next) {
+app.get('/getUser',function (req, res, next) {
   
-//   var nodeSSPIObj = new nodeSSPI({
+  var nodeSSPIObj = new nodeSSPI({
       
-//     retrieveGroups: true,
-//     authoritative:false
-//   })
-//   nodeSSPIObj.authenticate(req, res, function(err){
+    retrieveGroups: true,
+    authoritative:false
+  })
+  nodeSSPIObj.authenticate(req, res, function(err){
 
-//     res.send(req.connection.user) || next()
+    res.send(req.connection.user) || next()
 
 
-//   })
-//  });
+  })
+ });
 
  app.use('/sendDetails', function(req, res) {  
   var url = "http://srv001583/activeservicedeskadmin/helpdesk/api.php" + req.url;
   req.pipe(request(url)).pipe(res);
 });
 
-app.get('/getUser',function (req, res, next) {
+app.get('/getUser2',function (req, res, next) {
 
   username().then(username => {
     console.log(username);
