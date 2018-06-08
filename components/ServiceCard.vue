@@ -17,17 +17,14 @@
         <div class="circle-tile-content dark-blue-transparent">
           <div class="circle-tile-description text-faded"> {{subject}}</div>
           <div class="circle-tile-list text-faded ">
-              <ul
-             
               
-              >
+              
               <slot  name="link1"> </slot>
-              <slot name="link2"> </slot>
-               <slot name="link3"> </slot>
+              
                  <!-- <li><slot name="link1"> </slot></li>
 <li><slot name="link2"> </slot></li>
 <li><slot name="link3"> </slot></li> -->
-                    </ul>
+                   
               
           </div>
           
@@ -93,16 +90,7 @@ letter-spacing: 0.6px;
   text-align: center;
 }
 
-ul {
-  text-decoration: none;
-  list-style-type: none;
-  display: inline-block;
-  text-align: left;
-}
 
-li {
-  margin-top: 5px;
-}
 
 
 

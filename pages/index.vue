@@ -33,8 +33,8 @@
                   src="~/assets/images/support.png"
                   alt=""
                 >   
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
+<h5 slot="link1">Use QUICK LOG to log your issue</h5>
+
 
        
        
@@ -54,9 +54,7 @@
                   alt=""
                 >   
 
-      <li slot="link1">new user </li>
-<li slot="link2">changes</li>
-
+      <h5 slot="link1">Ask for CHANGES or ACCESS and more.</h5>
       
      
       
@@ -75,7 +73,7 @@
                   src="~/assets/images/forms.png"
                   alt=""
                 > 
-      
+      <h5 slot="link1">Find IT forms and Templates here.</h5>
       
       
        </ServiceCard></nuxt-link>
@@ -84,15 +82,14 @@
 <v-flex xs2> 
     <nuxt-link to="/policies">   <ServiceCard class="sc4"
       :subject="'Policies/Procedures'"
-       :listItem1="'option 1'"
-      :listItem2="'option 2'"
-      :listItem3="'...more'">
+       >
       
         <img slot="hp-image"
                   
                   src="~/assets/images/policies.png"
                   alt=""
                 > 
+                <h5 slot="link1">Find IT Policies here.</h5>
       
       </ServiceCard></nuxt-link>
 
@@ -106,8 +103,7 @@
                   src="~/assets/images/maps2.png"
                   alt=""
                 > 
-        <li class="text-faded" slot="link1">training </li>
-<li slot="link2">productivity</li>
+        <h5 slot="link1">SI IT Microsoft Productivity Training and Help.</h5>
 
       
        </ServiceCard></nuxt-link>
@@ -203,11 +199,6 @@ a{text-decoration:none;
   color: rgba(255, 255, 255, 0.9);
 }
 
-li:before {
-  content: "✓";
-  padding-right: 10px;
-  text-align: left;
-}
 
 
 .portal-image{
@@ -215,6 +206,15 @@ li:before {
   margin-top: 120px;
   margin-left:10px;
   opacity: 0;
+}
+
+h5 {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  font-weight: 400;
+
 }
 
 
