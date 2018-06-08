@@ -2,7 +2,7 @@
 const express = require('express')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-// const nodeSSPI = require('node-sspi')
+const nodeSSPI = require('node-sspi')
 const request = require('request')
 const username = require('username')
 // const host = process.env.HOST || '127.0.0.1'
@@ -56,7 +56,7 @@ start()
   req.pipe(request(url)).pipe(res);
 });
 
-app.get('/getUser2',function (req, res, next) {
+app.get('/getUser',function (req, res, next) {
 
   username().then(username => {
     console.log(username);

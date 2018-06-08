@@ -156,7 +156,7 @@ this.showInfo= false;
   
           axios
   
-            .get("/getUser2", {
+            .get("/getUser", {
   
               withCredentials: true
   
