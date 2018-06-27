@@ -13,7 +13,7 @@
 
        <div>
 
-         <slot  name="username"> </slot>
+         <!-- <slot  name="username"> </slot> -->
          <slot  name="subject"> </slot>
           <slot  name="info"> </slot>
            <slot  name="info-field"> </slot>

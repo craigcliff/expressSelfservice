@@ -1,4 +1,4 @@
-FROM compulim/nanoserver-node
+FROM node:carbon
 
 ADD . /app
 WORKDIR /app

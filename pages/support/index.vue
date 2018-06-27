@@ -7,7 +7,7 @@
       <v-container   >
 
           <v-layout row wrap class="panel-container" >
-        <v-flex lg4 >
+        <v-flex lg4 sm6 >
 
 <Panel :heading="'PASSWORDS AND ACCESS'">
 <img slot="panel-image"
@@ -21,7 +21,7 @@
 <li slot="link1">   <nuxt-link to="/support/password/forgotten">Forgotten my password</nuxt-link></li>
 <li slot="link2"><nuxt-link to="/support/password/reset">Reset my password</nuxt-link> </li>
 <li slot="link3"><nuxt-link to="/support/password/access">I need access to a folder</nuxt-link> </li>
-<li slot="link4"><nuxt-link to="/support/password/other">Other</nuxt-link></li>
+<!-- <li slot="link4"><nuxt-link to="/support/password/other">Other</nuxt-link></li> -->
 
 </Panel>
 
@@ -35,7 +35,7 @@
                   width="50"
                 >  
 
-<li slot="link1">   <nuxt-link to="/support/telephony/quality">Poor call quality</nuxt-link></li>
+<li slot="link1">   <nuxt-link to="/support/telephony/quality">My Telephone</nuxt-link></li>
 <li slot="link2"><nuxt-link to="/support/telephony/hunting">Telephone hunting groups</nuxt-link> </li>
 
 <li slot="link3"><nuxt-link to="/support/telephony/other">Other</nuxt-link></li>
@@ -53,9 +53,11 @@
                   width="40"
                 >  
 
-<li slot="link1"><Dialog title="Log a call" heading="testing"></Dialog></li>
-<li slot="link2"><Dialog title="Ask for help"></Dialog></li>
+<li slot="link1">   <nuxt-link to="/support/email/myEmail">My Email</nuxt-link></li>
+<li slot="link2"><nuxt-link to="/support/email/groups">Email Groups</nuxt-link> </li>
 
+<li slot="link3"><nuxt-link to="/support/email/archiving">Email Archiving</nuxt-link></li>
+<li slot="link4"><nuxt-link to="/support/email/other">Other Email Request/Issue</nuxt-link></li>
 
 
 </Panel>
@@ -70,8 +72,10 @@
                   width="40"
                 >  
 
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
+<li slot="link1">   <nuxt-link to="/support/office/movingLocation">We're moving to another location</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/office/newOffice">New Office Setup</nuxt-link></li>
+
+<li slot="link3">   <nuxt-link to="/support/office/other">Office Moves - Other</nuxt-link></li>
 
 
 </Panel>
@@ -86,7 +90,7 @@
  </v-flex>
 
 
- <v-flex lg4 >
+ <v-flex lg4 sm6>
 
 <Panel :heading="'DESKTOP'">
 <img slot="panel-image"
@@ -97,85 +101,14 @@
                   width="40"
                 >  
 
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
-<li slot="link3"><Dialog/> </li>
+<li slot="link1">   <nuxt-link to="/support/desktop/problem">I have a problem with my desktop PC</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/desktop/install">Request to install software on desktop</nuxt-link></li>
+
+<li slot="link3">   <nuxt-link to="/support/desktop/other">Other desktop request/issue</nuxt-link></li>
 
 
 </Panel>
 
-<Panel :heading="'CONNECTIVITY'">
-<img slot="panel-image"
-                  
-                  src="~/assets/images/support/connectivity.png"
-                  alt="Passwords"
-                  height="40"
-                  width="40"
-                >  
-
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
-
-
-</Panel>
-
-<Panel :heading="'APPLICATIONS'">
-<img slot="panel-image"
-                  
-                  src="~/assets/images/support/applications.png"
-                  alt="Passwords"
-                  height="40"
-                  width="40"
-                >  
-
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
-
-
-</Panel>
-
-<Panel :heading="'OTHER'">
-<img slot="panel-image"
-                  
-                  src="~/assets/images/support/other.png"
-                  alt="Passwords"
-                  height="40"
-                  width="40"
-                >  
-
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
-
-
-</Panel>
-
-
-
-          
-
-
-
-
-
- </v-flex>
-
- <v-flex lg4>
-
-   <Panel :heading="'PRINT AND SCANNING'">
-<img slot="panel-image"
-                  
-                  src="~/assets/images/support/print.png"
-                  alt="Passwords"
-                  height="40"
-                  width="40"
-                >  
-
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
-
-
-
-</Panel>
 <Panel :heading="'LAPTOP'">
 
 
@@ -187,8 +120,26 @@
                   width="40"
                 >  
 
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
+<li slot="link1">   <nuxt-link to="/support/laptop/problem">I have a problem with my laptop</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/laptop/install">Request to install software</nuxt-link></li>
+
+<li slot="link3">   <nuxt-link to="/support/laptop/other">Other laptop request/issue</nuxt-link></li>
+</Panel>
+
+<Panel :heading="'APPLICATIONS'">
+<img slot="panel-image"
+                  
+                  src="~/assets/images/support/applications.png"
+                  alt="Passwords"
+                  height="40"
+                  width="40"
+                >  
+
+<li slot="link1">   <nuxt-link to="/support/applications/iress">Iress (Hermes/Iress/Inet)</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/applications/other">Other Applications/Systems</nuxt-link></li>
+
+
+
 </Panel>
 
 <Panel :heading="'MEETING ROOMS'">
@@ -200,10 +151,82 @@
                   width="40"
                 >  
 
-<li slot="link1">log a call</li>
-<li slot="link2">ask for help </li>
+<li slot="link1">   <nuxt-link to="/support/meeting/video">Video Conferencing</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/meeting/telephone">Telephone Conferencing</nuxt-link></li>
+<li slot="link3">   <nuxt-link to="/support/meeting/other">Other meeting room request/issue</nuxt-link></li>
+
   
 </Panel>
+
+
+          
+
+
+
+
+
+ </v-flex>
+
+ <v-flex lg4 sm6>
+
+   <Panel :heading="'PRINT AND SCANNING'">
+<img slot="panel-image"
+                  
+                  src="~/assets/images/support/print.png"
+                  alt="Passwords"
+                  height="40"
+                  width="40"
+                >  
+
+<li slot="link1">   <nuxt-link to="/support/print/printing">My printing</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/print/faxing">My faxing</nuxt-link></li>
+
+<li slot="link3">   <nuxt-link to="/support/print/scanning">My scanning</nuxt-link></li>
+
+
+
+</Panel>
+
+
+
+<Panel :heading="'CONNECTIVITY'">
+<img slot="panel-image"
+                  
+                  src="~/assets/images/support/connectivity.png"
+                  alt="Passwords"
+                  height="40"
+                  width="40"
+                >  
+
+<li slot="link1">   <nuxt-link to="/support/connectivity/network">Connecting to the network</nuxt-link></li>
+<li slot="link2">   <nuxt-link to="/support/connectivity/internet">Connecting to the internet</nuxt-link></li>
+
+<li slot="link3">   <nuxt-link to="/support/connectivity/vpn">Using VPN</nuxt-link></li>
+<li slot="link4">   <nuxt-link to="/support/connectivity/other">Other connectivity request/issue</nuxt-link></li>
+
+
+</Panel>
+
+
+
+
+<Panel :heading="'OTHER'">
+<img slot="panel-image"
+                  
+                  src="~/assets/images/support/other.png"
+                  alt="Passwords"
+                  height="40"
+                  width="40"
+                >  
+
+<li slot="link1">   <nuxt-link to="/support/other/other">My issue/request is not on this page</nuxt-link></li>
+
+
+
+</Panel>
+
+
+
 
 
 

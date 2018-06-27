@@ -1,6 +1,6 @@
 <template>
 
-<formlogic :subject="'My Telephone'" :callType="'146'">
+<formlogic :subject="'Other laptop request/issue'" :callType="'160'">
 
 
 </formlogic>

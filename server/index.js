@@ -1,13 +1,15 @@
 
 const express = require('express')
+const ntlm = require('express-ntlm');
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-const nodeSSPI = require('node-sspi')
+// const nodeSSPI = require('node-sspi')
 const request = require('request')
-const username = require('username')
+// const username = require('username')
 // const host = process.env.HOST || '127.0.0.1'
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3003
+
 
 app.set('port', port)
 
@@ -36,33 +38,56 @@ start()
 
 
 
-app.get('/getUser',function (req, res, next) {
-  
-  var nodeSSPIObj = new nodeSSPI({
-      
-    retrieveGroups: true,
-    authoritative:false
-  })
-  nodeSSPIObj.authenticate(req, res, function(err){
 
-    res.send(req.connection.user) || next()
-
-
-  })
- });
 
  app.use('/sendDetails', function(req, res) {  
   var url = "http://srv001583/activeservicedeskadmin/helpdesk/api.php" + req.url;
   req.pipe(request(url)).pipe(res);
 });
 
-app.get('/getUser2',function (req, res, next) {
 
-  username().then(username => {
-    console.log(username);
-    res.send(username);
-    //=> 'sindresorhus'
-  });
+
+ app.use(ntlm({
+  debug: function() {
+      var args = Array.prototype.slice.apply(arguments);
+      console.log.apply(null, args);
+  },
+  domain: 'mud',
+  domaincontroller: 'ldap://srv001318.mud.internal.co.za',
+
+  // use different port (default: 389)
+  // domaincontroller: 'ldap://myad.example:3899',
+}));
+
+app.get('/getUser3', function(request, response) {
+  response.send(JSON.stringify(request.ntlm));
+   // {"DomainName":"MYDOMAIN","UserName":"MYUSER","Workstation":"MYWORKSTATION"}
+   console.log(request.ntlm);
+});
+
+
+// app.get('/getUser',function (req, res, next) {
+  
+//   var nodeSSPIObj = new nodeSSPI({
+      
+//     retrieveGroups: true,
+//     authoritative:false
+//   })
+//   nodeSSPIObj.authenticate(req, res, function(err){
+
+//     res.send(req.connection.user) || next()
+
+
+//   })
+//  });
+
+// app.get('/getUser2',function (req, res, next) {
+
+//   username().then(username => {
+//     console.log(username);
+//     res.send(username);
+//     //=> 'sindresorhus'
+//   });
   
 
- });
+//  });

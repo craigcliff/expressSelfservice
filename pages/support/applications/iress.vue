@@ -1,7 +1,6 @@
 <template>
 
-<formlogic :subject="'My Telephone'" :callType="'146'">
-
+<formlogic :subject="'Iress (Hermes/Iress/Inet)'" :callType="'177'">
 
 </formlogic>
   

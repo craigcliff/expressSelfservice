@@ -75,7 +75,7 @@ export default {
   line-height: 80px;
 }
 .circle-tile-content {
-  font-size: 18px;
+  font-size: 16px;
   padding-top: 50px;
   /* width: 170px; */
   letter-spacing: 0.6px;
