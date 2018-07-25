@@ -47,23 +47,23 @@ start()
 
 
 
- app.use(ntlm({
-  debug: function() {
-      var args = Array.prototype.slice.apply(arguments);
-      console.log.apply(null, args);
-  },
-  domain: 'mud',
-  domaincontroller: 'ldap://srv001318.mud.internal.co.za',
+//  app.use(ntlm({
+//   debug: function() {
+//       var args = Array.prototype.slice.apply(arguments);
+//       console.log.apply(null, args);
+//   },
+//   domain: 'mud',
+//   domaincontroller: 'ldap://srv001318.mud.internal.co.za',
 
-  // use different port (default: 389)
-  // domaincontroller: 'ldap://myad.example:3899',
-}));
+//   // use different port (default: 389)
+//   // domaincontroller: 'ldap://myad.example:3899',
+// }));
 
-app.get('/getUser3', function(request, response) {
-  response.send(JSON.stringify(request.ntlm));
-   // {"DomainName":"MYDOMAIN","UserName":"MYUSER","Workstation":"MYWORKSTATION"}
-   console.log(request.ntlm);
-});
+// app.get('/getUser3', function(request, response) {
+//   response.send(JSON.stringify(request.ntlm));
+//    // {"DomainName":"MYDOMAIN","UserName":"MYUSER","Workstation":"MYWORKSTATION"}
+//    console.log(request.ntlm);
+// });
 
 
 // app.get('/getUser',function (req, res, next) {

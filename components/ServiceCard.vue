@@ -52,7 +52,7 @@ export default {
   margin-bottom: 15px;
   text-align: center;
   background-color: transparent;
-   max-width: 220px;
+  width: 220px;
 }
 .circle-tile-heading {
   /* border: 4.5px solid rgba(255, 255, 255, 0.3); */

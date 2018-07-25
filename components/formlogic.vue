@@ -9,11 +9,13 @@
   
   
   
-          <formComponent>
+          <formComponent  v-model="valid" lazy-validation>
   
   
   
-            <v-text-field slot="username" label="Username" required  v-model="username">
+            <v-text-field slot="username" label="Username" required  v-model="username"
+            
+            >
 
   
   
@@ -27,7 +29,10 @@
   
             </v-text-field>
   
-            <v-text-field slot="info" label="Provide further information about this request, if possible" textarea v-model="information">
+            <v-text-field slot="info" label="Provide further information about this request, if possible" textarea v-model="information"
+            :rules="nameRules"
+            
+            >
   
   
   
@@ -104,6 +109,17 @@
     data() {
   
       return {
+        valid: true,
+        nameRules: [
+      v => !!v || 'Description is required'
+      // v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+    ],
+
+
+
+
+
+
         showProgress: false,
         showInfo: false,
      
@@ -126,14 +142,31 @@
       };
   
     },
+
+     computed: {
+    user () { // gets updated automatically
+      return this.$store.state.user
+      
+    }
+  },
+  created () {
+    this.$store.dispatch('fetchUser')
+  },
+  
+
+  mounted(){
+
+ 
+    console.log(`form component mounted: ${this.$store.state.user}`);
+  },
   
   
   
-    mounted() {
+    // mounted() {
   
-      this.loadUsername();
+    //   this.loadUsername();
   
-    },
+    // },
   
   
   
@@ -144,67 +177,80 @@
 this.dialog = false;
 this.showProgress= false;
 this.showInfo= false;
+this.$router.push({
+    path: '/support'
+})
 
 
       },
   
-      loadUsername() {
+      // loadUsername() {
   
-        var temp = "";
+      //   var temp = "";
   
   
   
-        {
+      //   {
   
-          axios
+      //     axios.get("http://srv006604:82/node/express/myapp/status", {
+      //        "Content-Type": "application/json",
   
-            .get("/getUser3", {
+      //         "Cache-Control": "no-cache",
   
-              withCredentials: true
+      //         "Access-Control-Allow-Origin": "*",
   
-            })
+      //         withCredentials: true
+  
+      //       })
   
            
   
-            .then(response => {
+      //       .then(response => {
                
   
-              temp = response.data.UserName;
-              console.log(response);
+            
+      //         var temp = response.data.replace(/MUD\\/g, "");
+      //         console.log(temp);
   
-              this.username = temp;
+      //         this.username = temp;
               
             
 
-              console.log('Hello ' + this.username);
+      //         console.log('Hello ' + this.username);
   
-              console.log("testing Hello");
+        
   
-            })
+      //       })
   
-            .catch(error => {
+      //       .catch(error => {
   
-              console.log(error.response);
+      //         console.log(error.response);
   
-            });
+      //       });
   
-        }
+      //   }
   
-      },
+      // },
   
       submit() {
+
+        if (this.information != '' && this.subject !='') {
   this.dialog = true;
        this.showProgress= true;
   
 
-
+console.log(this.callType);
           var postData = {
   api:"integration",profile:"sanlam",userid:"admin",pwd:"admin", 
   data: 
-    {ASDCallTypeID:this.callType,
-    ASDClassificationID:"3",
+    {
+    TASKTYPE: this.callType,
+    TASKTYPECLASSIFICATION:"3",
+    TASKOWNEREMAIL: this.$store.state.user,
+    ACTIONADUSERNAME: this.$store.state.user,
+    
     ASDSubject:this.subject,
-    ASDOwnerEmail:this.username,
+    ASDOwnerEmail:this.$store.state.user,
     ACTION:"NEW",
     SUBJECT:this.subject,
     DESC:this.information}
@@ -236,7 +282,7 @@ console.log(postData);
   
             .post(
   
-              "/sendDetails",
+              "http://srv006604:82/node/express/myapp/sendDetails",
   
               postData,
   
@@ -245,9 +291,9 @@ console.log(postData);
             )
   
             .then(res => {
-  
-              console.log("RESPONSE RECEIVED: ", res);
-              
+                  console.log(`username from form component ${this.$store.state.user}`);
+              console.log("RESPONSE RECEIVED: "+ res);
+          
               this.showInfo = true
               this.showProgress= false;
              
@@ -262,14 +308,14 @@ console.log(postData);
             });
   
        
-  
+        }
       },
   
   
   
       clear() {
   
-        this.$refs.form.reset();
+        this.information = '';
   
       }
   

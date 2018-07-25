@@ -29,6 +29,7 @@ background-color:rgba(145,101,126,0.8);
 display: flex;
 
 
+
 }
 
 .sub-heading-text{

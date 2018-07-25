@@ -7,7 +7,7 @@
       <v-container   >
 
           <v-layout row wrap class="panel-container" >
-        <v-flex lg4 sm6 >
+        <v-flex md4 lg4 sm6 >
 
 <Panel :heading="'PASSWORDS AND ACCESS'">
 <img slot="panel-image"
@@ -90,7 +90,7 @@
  </v-flex>
 
 
- <v-flex lg4 sm6>
+ <v-flex md4 lg4 sm6>
 
 <Panel :heading="'DESKTOP'">
 <img slot="panel-image"
@@ -167,7 +167,7 @@
 
  </v-flex>
 
- <v-flex lg4 sm6>
+ <v-flex md4 lg4 sm6>
 
    <Panel :heading="'PRINT AND SCANNING'">
 <img slot="panel-image"
@@ -219,7 +219,13 @@
                   width="40"
                 >  
 
-<li slot="link1">   <nuxt-link to="/support/other/other">My issue/request is not on this page</nuxt-link></li>
+<li slot="link1" >  
+  
+   <!-- <nuxt-link to="Dialog">My issue/request is not on this page</nuxt-link> -->
+ <Dialog  :subject="'My issue/request is not on this page'" :callType="'186'"> </Dialog>
+
+</li>
+
 
 
 
@@ -241,6 +247,7 @@
 
      
     </v-content>
+    
 
     </div>
 </template>
@@ -270,6 +277,22 @@ Dialog
       }
 
 
+  },
+   computed: {
+    user () { // gets updated automatically
+      return this.$store.state.user
+      
+    }
+  },
+  created () {
+    this.$store.dispatch('fetchUser')
+  },
+  
+
+  mounted(){
+
+    
+    console.log(this.$store.state.user);
   }
 
 
@@ -284,12 +307,16 @@ Dialog
 
 .main-content{
 
-height: 100vh;
-
-
+height: 100%;
+background: linear-gradient(217deg, rgba(204, 199, 199, 0.8), rgba(202, 199, 199, 0) 70.71%),
+            linear-gradient(127deg, rgba(204, 212, 204, 0.8), rgba(169, 175, 169, 0) 70.71%),
+            linear-gradient(336deg, rgba(182, 182, 233, 0.8), rgba(152, 152, 180, 0) 70.71%);
+   background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
 }
 
-a {
+a  {
  list-style: none;
  text-decoration: none;
      color: black;
@@ -301,11 +328,16 @@ a {
  }
 
  
+
+ 
  li a:before {
 		content: "\00BB \0020";
     padding-left: 18px;
        padding-right: 16px;
  	     } 
+
+
+      
 
 
  a:hover {
@@ -317,7 +349,7 @@ a {
    
    /* background:  rgba(255, 255, 255, 0.2) ;
    border-radius: 20px; */
-   padding-left: 40px;
+   /* padding-left: 40px; */
    position: relative;
 
     

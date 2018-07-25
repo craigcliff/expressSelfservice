@@ -1,7 +1,7 @@
 <template>
-  <v-navigation-drawer clipped fixed  v-model="drawer" permanent absolute  app width="180"  class="drawer-color">
+  <v-navigation-drawer fixed mobile-break-point="900"  mini-variant mini-variant-width="140"  hide-overlay clipped absolute  v-model="drawer"    app width="180"  class="drawer-color drawer-position">
   
-  
+  <!--  -->
   
     <div class="drawer-list-con">
   
@@ -183,6 +183,11 @@
   
   
   }
+
+  .nav{
+
+    z-index:1000;
+  }
   
   
   
@@ -280,8 +285,14 @@
   
   .drawer-color {
   
-    background-color: rgba(145, 101, 126, 0.55);
+    background-color: rgba(145, 101, 126);
   
+  }
+
+  .drawer-position{
+    /* top: 90px; */
+
+
   }
 
   .panel-image{

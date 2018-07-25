@@ -5,9 +5,9 @@
       
    <Drawer/>
      <Navigation/>
-     <v-content>
+     <!-- <v-content>
      <SubNav class="sub"> </SubNav>
-     </v-content>
+     </v-content> -->
      
   <nuxt />
     

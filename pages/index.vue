@@ -1,5 +1,5 @@
 <template>
-<v-container fluid fill-height bg-image>
+<v-container fluid  bg-image>
   <v-layout column>
 <v-layout column wrap   >
 
@@ -22,8 +22,11 @@
   
  
 
-   <v-layout justify-space-around   > 
-    <v-flex xs2>  
+   <v-layout  justify-space-around row wrap  class="panels"> 
+
+
+     
+     
     
      <router-link to="/support">  <ServiceCard class="sc1"
      :subject="'Support'"> 
@@ -40,12 +43,11 @@
        
        </ServiceCard></router-link>
 
-       </v-flex>
+     
 
 
-<v-flex xs2> 
 
-    <nuxt-link to="/requests">    <ServiceCard class="sc2"
+    <nuxt-link to="/requests">    <ServiceCard class="sc1"
       :subject="'requests'">
 
       <img slot="hp-image"
@@ -60,11 +62,9 @@
       
        </ServiceCard></nuxt-link>
 
-</v-flex>
+ 
 
-<v-flex xs2> 
-
-     <nuxt-link to="/forms">  <ServiceCard class="sc3"
+     <nuxt-link to="/forms">  <ServiceCard class="sc1"
       :subject="'Forms/Templates'">
 
         
@@ -77,10 +77,8 @@
       
       
        </ServiceCard></nuxt-link>
-</v-flex>
 
-<v-flex xs2> 
-    <nuxt-link to="/policies">   <ServiceCard class="sc4"
+    <nuxt-link to="/policies">   <ServiceCard class="sc1"
       :subject="'Policies/Procedures'"
        >
       
@@ -93,9 +91,8 @@
       
       </ServiceCard></nuxt-link>
 
-</v-flex>
-<v-flex xs2> 
-    <nuxt-link to="/maps">    <ServiceCard class="sc5"
+ 
+    <nuxt-link to="/maps">    <ServiceCard class="sc1"
       :subject="'Maps'">
        
        <img slot="hp-image"
@@ -108,7 +105,7 @@
       
        </ServiceCard></nuxt-link>
 
-     </v-flex>  
+    
       </v-layout>
  
  </v-layout>
@@ -145,10 +142,23 @@ export default {
     }
 
   },
+  computed: {
+    user () { // gets updated automatically
+      return this.$store.state.user
+      
+    }
+  },
+  created () {
+    this.$store.dispatch('fetchUser')
+  },
+  
 
   mounted(){
 
     this.animateEntrance();
+    console.log(this.$store.state.user);
+
+
   },
 
   methods: {
@@ -158,10 +168,10 @@ animateEntrance: function() {
       this.tl
       .fromTo(".portal-image", 0.9, { scale:0 , autoAlpha:0, ease: Linear.easeNone }, {scale:1, autoAlpha:1})
       //  .to(".portal-image", spd, { left:300,ease:Back.easeIn, ease:Bounce.easeOut})
-      .staggerTo(".sc1, .sc2, .sc3, .sc4, .sc5", 1, {
+      .to(".sc1", 1.2, {
           opacity:1
           
-        },0.4);
+        });
       // this.tl.to(".bg-home", spd, { scale: 1, x: 0 });
       // this.tl.to(".bg-home", spd, { scale: 1.6, x: +400 });
     
@@ -180,6 +190,7 @@ animateEntrance: function() {
 background: url(~/assets/images/bg.jpeg) ;
    background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
 
 }
 
@@ -203,9 +214,28 @@ a{text-decoration:none;
 
 .portal-image{
 
-  margin-top: 120px;
+  margin-top: 80px;
   margin-left:10px;
+  margin-bottom: 80px;
   opacity: 0;
+}
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+   .panels{
+
+margin-top: 400px;
+
+
+}
+}
+
+
+@media screen and (max-width: 1160px) {
+  .portal-image {
+     margin-top: 20px;
+  margin-left:10px;
+     margin-bottom: 0px;
+  }
 }
 
 h5 {

@@ -103,6 +103,7 @@ export default {
    width: 230px;
    color: #1976D2;
    font-weight: 700;
+   cursor: pointer;
 }
 
   @media screen and (max-width: 1260px) {
