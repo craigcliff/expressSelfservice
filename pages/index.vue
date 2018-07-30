@@ -22,8 +22,10 @@
   
  
 
-   <v-layout  justify-space-around row wrap  class="panels"> 
+   <v-layout justify-start  row wrap  class="panels">
 
+
+<!-- <v-layout  justify-space-around row wrap  class="panels">  -->
 
      
      
@@ -47,7 +49,7 @@
 
 
 
-    <nuxt-link to="/requests">    <ServiceCard class="sc1"
+    <!-- <nuxt-link to="/requests">    <ServiceCard class="sc1"
       :subject="'requests'">
 
       <img slot="hp-image"
@@ -60,11 +62,11 @@
       
      
       
-       </ServiceCard></nuxt-link>
+       </ServiceCard></nuxt-link> -->
 
  
 
-     <nuxt-link to="/forms">  <ServiceCard class="sc1"
+     <!-- <nuxt-link to="/forms">  <ServiceCard class="sc1"
       :subject="'Forms/Templates'">
 
         
@@ -76,9 +78,9 @@
       <h5 slot="link1">Find IT forms and Templates here.</h5>
       
       
-       </ServiceCard></nuxt-link>
+       </ServiceCard></nuxt-link> -->
 
-    <nuxt-link to="/policies">   <ServiceCard class="sc1"
+    <!-- <nuxt-link to="/policies">   <ServiceCard class="sc1"
       :subject="'Policies/Procedures'"
        >
       
@@ -89,10 +91,10 @@
                 > 
                 <h5 slot="link1">Find IT Policies here.</h5>
       
-      </ServiceCard></nuxt-link>
+      </ServiceCard></nuxt-link> -->
 
  
-    <nuxt-link to="/maps">    <ServiceCard class="sc1"
+    <a href="http://sinergy.internal.co.za/SiteDirectory/IT/maps/SitePages/Home.aspx">    <ServiceCard class="sc1 sc2"
       :subject="'Maps'">
        
        <img slot="hp-image"
@@ -103,7 +105,7 @@
         <h5 slot="link1">SI IT Microsoft Productivity Training and Help.</h5>
 
       
-       </ServiceCard></nuxt-link>
+       </ServiceCard></a>
 
     
       </v-layout>
@@ -149,7 +151,8 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('fetchUser')
+    this.$store.dispatch('fetchUser');
+    // this.$store.dispatch('fetchCallDetails')
   },
   
 
@@ -157,7 +160,7 @@ export default {
 
     this.animateEntrance();
     console.log(this.$store.state.user);
-
+    // console.log(this.$store.state.callDetails);
 
   },
 
@@ -197,6 +200,10 @@ background: url(~/assets/images/bg.jpeg) ;
 .sc1, .sc2, .sc3, .sc4, .sc5{
   opacity: 0;
 }
+
+.sc1{
+
+margin-left:30px; }
 
 
 

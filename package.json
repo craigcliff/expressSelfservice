@@ -1,7 +1,7 @@
 {
   "name": " SelfService",
   "version": "1.0.0",
-  "description": "SI helpdesk selfService",
+  "description": "SI Helpdesk SelfService",
   "author": "C Hector",
   "private": true,
   "scripts": {
@@ -21,7 +21,7 @@
     "nuxt": "^1.4.1",
     "request": "^2.87.0",
     "username": "^3.0.0",
-    "vuetify": "^0.17.3"
+    "vuetify": "^1.1.8"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",

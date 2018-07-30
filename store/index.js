@@ -14,19 +14,19 @@ const createStore = () => {
 
       callsArray: state => {
         return Object.values(this.$store.state.userCalls);
-       
+
 
       }
 
- 
+
     },
-    
+
 
     mutations: {
-      navStateTrue (state) {
+      navStateTrue(state) {
         state.navState = true;
       },
-      navStateFalse (state) {
+      navStateFalse(state) {
         state.navState = false;
       },
       setUser(state, user) {
@@ -37,7 +37,7 @@ const createStore = () => {
         // example of modifying before storing
         state.userCalls = Object(userCalls)
       },
-      
+
       // toggleDialog: (state) => {
       //   return state.dialog = !state.dialog;
       // },
@@ -52,6 +52,71 @@ const createStore = () => {
       // }
     },
     actions: {
+
+
+
+
+
+
+
+
+      // nuxtServerInit({ commit }) {
+      //   return axios.get("http://srv006604:82/node/express/myapp/status", {
+      //     "Content-Type": "application/json",
+
+      //     "Cache-Control": "no-cache",
+
+      //     "Access-Control-Allow-Origin": "*",
+
+      //     withCredentials: true
+
+      //   })
+      //     .then(response => {
+
+
+
+      //       var tempUser = response.data.replace(/MUD\\/g, "");
+      //       console.log(tempUser);
+
+
+
+      //       let axiosConfig = {
+
+      //         headers: {
+
+      //           "Content-Type": "application/json",
+
+      //           "Cache-Control": "no-cache",
+
+      //           "Access-Control-Allow-Origin": "*",
+
+      //           withCredentials: "true"
+
+      //         }
+
+      //       };
+
+           
+
+
+      //       commit('setUser', tempUser)
+            
+      //       // console.log('Hello ' + this.username);
+
+
+
+
+      //     })
+
+      //     .catch(error => {
+
+      //       console.log(error.response);
+
+      //     });
+      // },
+
+
+      
 
       fetchUser(store) {
 
@@ -75,7 +140,7 @@ const createStore = () => {
             var tempUser = response.data.replace(/MUD\\/g, "");
             console.log(tempUser);
 
-            
+
 
             let axiosConfig = {
 
@@ -101,7 +166,7 @@ const createStore = () => {
               "pwd": "admin",
               "query": "mbv1UsersOpenCalls",
               "arg1": tempUser
-              
+
             };
 
             axios
@@ -133,14 +198,14 @@ const createStore = () => {
                 store.commit('setUserCalls', res.data.data.result)
                 console.log(`RESPONSE :  ${store.state.userCalls[1].Iss_Irn}`);
                 return store.state.userCalls;
-                
-                
+
+
               })
 
               .catch(err => {
 
                 console.log("AXIOS ERROR: ", err);
-               
+
 
               });
 
@@ -148,7 +213,7 @@ const createStore = () => {
             store.commit('setUser', tempUser)
             return store.state.user;
             // console.log('Hello ' + this.username);
-            
+
 
 
 
@@ -164,17 +229,10 @@ const createStore = () => {
 
 
       }
-      
+
     }
   })
 }
 
 
 export default createStore
-
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer fixed mobile-break-point="900"  mini-variant mini-variant-width="140"  hide-overlay clipped absolute  v-model="drawer"    app width="180"  class="drawer-color drawer-position">
+  <v-navigation-drawer  mobile-break-point="900"  mini-variant mini-variant-width="140"  hide-overlay clipped   v-model="drawer"    app width="180"  class="drawer-color drawer-position">
   
   <!--  -->
   
@@ -65,11 +65,11 @@
       
   
         <DrawerIcon :heading="'MAPS'">
-  <nuxt-link slot="panel-link"  to="/maps" exact>
+  <a href="http://sinergy.internal.co.za/SiteDirectory/IT/maps/SitePages/Home.aspx" slot="panel-link"   >
           <img slot="panel-image" class="panel-image" src="~/assets/images/maps2.png" alt="Smiley face" >
   
   <div slot ="panel-heading" class="panel-heading">Maps</div>
-  </nuxt-link>
+  </a>
         </DrawerIcon>
   
       
